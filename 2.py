@@ -1,36 +1,13 @@
-def foo():
-	b = 123
-	def bar():
-		nonlocal b
-		b = 456
-		print(b)
-	bar()
-	print(b)
-print(foo())
-##局部变量
-#内嵌
-#全局变量 
-#内建？？？
-#print(""sassds"afasfas'''	"")
-print(__name__)
-#if __name__ == '__main__':
-#	print(globals())
-	#print(locals())\
-def add(x,y):
-	print(id(x),id(y))
-	x = 2
-	y = 6
-	print(id(x),id(y))
-	return x+y
-a = 1
-b = 2
-print(id(a),id(b))
-add(a,b)
-print(id(a),id(b))
-
-for n in range(1,20):
-	for x  in range(2,n):
-		if n%x == 0:
-			print(n,x)
-	else:
-		print(n,'素数')
+import os
+root_path = os.getcwd()
+offset = len(root_path.split("\\"))
+#print(root_path)
+for root,dirs,files in os.walk(root_path):
+	current_dir = root
+	#print(root)
+	path_list = current_dir.split("\\")
+	indent_level = len(path_list) - offset
+#	print("\t"*indent_level,"\\",path_list[-1])
+	for f in files:
+		file_path = root+"\\"+os.path.splitext(f)[0]
+		print(file_path)
